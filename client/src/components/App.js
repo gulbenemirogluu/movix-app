@@ -7,11 +7,11 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
-
-//null   Anyone Can go inside
-//true   only logged in user can go inside
-//false  logged in user can't go inside
-
+import MovieDetail from "./views/MovieDetail/MovieDetail"
+import FavoritePage from "./views/FavoritePage/FavoritePage"
+import {Movies} from "./views/MoviesScreen/Movies"
+import {Series} from "./views/SeriesScreen/SeriesScreen"
+import {SelectedCategory} from "./views/SelectedCategory/SelectedCategory"
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
@@ -21,6 +21,13 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)} />
+          <Route exact path="/tv/:movieId" component={Auth(MovieDetail, null)} />
+          <Route exact path="/favorite" component={Auth(FavoritePage, null)} />
+          <Route exact path="/movies" component={Auth(Movies, null)} />
+          <Route exact path="/tv-series" component={Auth(Series, null)} />
+          <Route exact path="/movies/:category" component={Auth(SelectedCategory, null)} />
+          <Route exact path="/tv-series/:category" component={Auth(SelectedCategory, null)} />
         </Switch>
       </div>
       <Footer />
